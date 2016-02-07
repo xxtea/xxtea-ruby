@@ -7,9 +7,14 @@ describe "XXTEA" do
         text = "Hello World! 你好，中国！"
         key = "1234567890"
         encrypt_data = XXTEA.encrypt(text, key)
-        decrypt_data = XXTEA.decrypt_utf8(encrypt_data, key)
-        decrypt_data2 = XXTEA.decrypt(encrypt_data, key).force_encoding(Encoding::UTF_8)
-        assert_equal text, decrypt_data
-        assert_equal decrypt_data, decrypt_data2
+        if RUBY_VERSION >= "1.9.0" then
+            decrypt_data = XXTEA.decrypt_utf8(encrypt_data, key)
+            decrypt_data2 = XXTEA.decrypt(encrypt_data, key).force_encoding(Encoding::UTF_8)
+            assert_equal text, decrypt_data
+            assert_equal decrypt_data, decrypt_data2
+        else
+            decrypt_data = XXTEA.decrypt(encrypt_data, key)
+            assert_equal text, decrypt_data
+        end
     end
 end

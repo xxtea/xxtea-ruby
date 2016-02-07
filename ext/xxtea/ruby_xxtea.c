@@ -15,7 +15,9 @@
 \**********************************************************/
 
 #include <ruby.h>
+#if (RUBY_VERSION_MAJOR == 1) && (RUBY_VERSION_MINOR > 8) || (RUBY_VERSION_MAJOR > 1)
 #include <ruby/encoding.h>
+#endif
 #include "xxtea.h"
 
 VALUE rb_encrypt(VALUE mod, VALUE data, VALUE key) {
@@ -56,13 +58,17 @@ VALUE rb_decrypt(VALUE mod, VALUE data, VALUE key) {
 	return retval;
 }
 
+#if (RUBY_VERSION_MAJOR == 1) && (RUBY_VERSION_MINOR > 8) || (RUBY_VERSION_MAJOR > 1)
 VALUE rb_decrypt_utf8(VALUE mod, VALUE data, VALUE key) {
 	return rb_enc_associate(rb_decrypt(mod, data, key), rb_utf8_encoding());
 }
+#endif
 
 void Init_xxtea() {
     VALUE XXTEA = rb_define_module("XXTEA");
     rb_define_singleton_method(XXTEA, "encrypt", rb_encrypt, 2);
     rb_define_singleton_method(XXTEA, "decrypt", rb_decrypt, 2);
+#if (RUBY_VERSION_MAJOR == 1) && (RUBY_VERSION_MINOR > 8) || (RUBY_VERSION_MAJOR > 1)
 	rb_define_singleton_method(XXTEA, "decrypt_utf8", rb_decrypt_utf8, 2);
+#endif
 }

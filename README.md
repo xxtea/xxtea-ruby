@@ -9,7 +9,7 @@ It is different from the original XXTEA encryption algorithm. It encrypts and de
 ## Installation
 
 ```sh
-gem install xxtea
+gem install xxtea-ruby
 ```
 
 ## Usage

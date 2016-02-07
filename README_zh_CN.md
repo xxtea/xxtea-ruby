@@ -29,3 +29,7 @@ puts (text == decrypt_data ? "success!" : "fail!");
 ```ruby
 XXTEA.decrypt_utf8(encrypt_data, key) == XXTEA.decrypt(encrypt_data, key).force_encoding(Encoding::UTF_8)
 ```
+
+## 注意
+
+在 1.8.x 或更低版本的 Ruby 上，没有 decrypt_utf8 这个函数。

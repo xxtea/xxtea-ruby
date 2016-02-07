@@ -26,7 +26,10 @@ decrypt_data = XXTEA.decrypt_utf8(encrypt_data, key)
 puts (text == decrypt_data ? "success!" : "fail!");
 ```
 
-
 ```ruby
 XXTEA.decrypt_utf8(encrypt_data, key) == XXTEA.decrypt(encrypt_data, key).force_encoding(Encoding::UTF_8)
 ```
+
+## Note
+
+There is no decrypt_utf8 function in ruby 1.8.x or lower version.

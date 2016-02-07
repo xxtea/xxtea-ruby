@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'xxtea-ruby'
-  s.version     = '1.0.0'
+  s.version     = '1.1.0'
   s.license     = 'MIT'
   s.author      = 'Ma Bingyao ( andot )'
   s.email       = 'mabingyao@gmail.com'
@@ -23,5 +23,4 @@ EOF
   }
   s.require_path = 'lib'
   s.extensions   = ["ext/xxtea/extconf.rb"]
-  s.has_rdoc     = false
-end
+  end

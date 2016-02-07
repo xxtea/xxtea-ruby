@@ -17,6 +17,7 @@ gem install xxtea-ruby
 ## 使用
 
 ```ruby
+# encoding: utf-8
 require "xxtea"
 text = "Hello World! 你好，中国！"
 key = "1234567890"

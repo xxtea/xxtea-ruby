@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'xxtea'
+  s.name        = 'xxtea-ruby'
   s.version     = '1.0.0'
   s.license     = 'MIT'
   s.author      = 'Ma Bingyao ( andot )'

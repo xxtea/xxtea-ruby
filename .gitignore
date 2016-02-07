@@ -1,6 +1,8 @@
 
+tmp
+
 *.lock
 
 *.bundle
 
-tmp
+*.gem

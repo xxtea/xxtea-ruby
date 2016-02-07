@@ -1,5 +1,7 @@
 # XXTEA for Ruby
 
+[![Build Status](https://travis-ci.org/xxtea/xxtea-ruby.svg?branch=master)](https://travis-ci.org/xxtea/xxtea-ruby)
+
 ## Introduction
 
 XXTEA is a fast and secure encryption algorithm. This is a XXTEA library for Ruby.

@@ -9,7 +9,7 @@ XXTEA 是一个快速安全的加密算法。本项目是 XXTEA 加密算法的 
 ## 安装
 
 ```sh
-gem install xxtea-ruby
+gem install xxtea
 ```
 
 ## 使用

@@ -1,6 +1,7 @@
 # XXTEA 加密算法的 Ruby 实现
 
 [![Build Status](https://travis-ci.org/xxtea/xxtea-ruby.svg?branch=master)](https://travis-ci.org/xxtea/xxtea-ruby)
+[![Gem](https://img.shields.io/gem/v/xxtea-ruby.svg)](https://rubygems.org/gems/xxtea-ruby)
 
 ## 简介
 

@@ -4,7 +4,7 @@ require 'rake/testtask'
 require 'rake/clean'
 
 Rake::ExtensionTask.new('xxtea') do |ext|
-  ext.lib_dir = 'lib'
+  ext.lib_dir = 'lib/xxtea'
 end
 
 Rake::TestTask.new do |t|

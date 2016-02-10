@@ -19,11 +19,8 @@ module XXTEA
     attach_function :xxtea_decrypt, [:pointer, :size_t, :pointer, :pointer], :pointer
     attach_function :free, [:pointer], :void
   end
-
   public
-
   module_function
-
   def encrypt(data, key)
     return nil if data.nil?
     data_len = data.bytesize
@@ -36,7 +33,6 @@ module XXTEA
     LIB.free(result)
     return retval
   end
-
   def decrypt(data, key)
     return nil if data.nil?
     data_len = data.bytesize
@@ -57,5 +53,4 @@ module XXTEA
   else
     alias_method :decrypt_utf8, :decrypt
   end
-
 end

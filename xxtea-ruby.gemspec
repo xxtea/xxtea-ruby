@@ -18,5 +18,5 @@ EOF
   s.require_path = 'lib'
   s.extensions   = ["ext/xxtea/extconf.rb"]
   
-  s.add_runtime_dependency 'ffi', '~> 0.5', '>= 0.5.0'
+  s.add_runtime_dependency 'ffi', '~> 1.9', '>= 1.9.10'
 end

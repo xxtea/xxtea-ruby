@@ -6,10 +6,16 @@ rvm:
   - 2.0.0
   - 2.1
   - 2.2
-  - jruby-18mode # JRuby in 1.8 mode
-  - jruby-19mode # JRuby in 1.9 mode
+  - jruby-18mode
+  - jruby-19mode
+  - jruby-head
   - rbx-2.1.1
   - ree
+  jdk:
+  - openjdk7
+  - oraclejdk7
+  - oraclejdk8
+  - openjdk6
 env:
   - JRUBY_OPTS="-Xcext.enabled=true"
 script: "bundle exec rake test"

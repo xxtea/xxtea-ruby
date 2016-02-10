@@ -1,8 +1,8 @@
 # encoding: utf-8
 require "minitest/autorun"
-require "xxtea"
+require "xxtea_ffi"
 
-describe "xxtea" do
+describe "xxtea_ffi" do
     it "test xxtea encrypt and decrypt" do
         text = "Hello World! \0你好，中国！"
         key = "1234567890"

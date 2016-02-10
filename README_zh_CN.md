@@ -33,4 +33,4 @@ XXTEA.decrypt_utf8(encrypt_data, key) == XXTEA.decrypt(encrypt_data, key).force_
 
 ## 注意
 
-在 1.8.x 或更低版本的 Ruby 上，没有 decrypt_utf8 这个函数。
+在 1.8.x 或更低版本的 Ruby 上，decrypt_utf8 只是 decrypt 的一个别名。

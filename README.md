@@ -34,4 +34,4 @@ XXTEA.decrypt_utf8(encrypt_data, key) == XXTEA.decrypt(encrypt_data, key).force_
 
 ## Note
 
-There is no decrypt_utf8 function in ruby 1.8.x or lower version.
+decrypt_utf8 is an alias of decrypt in ruby 1.8.x or lower version.

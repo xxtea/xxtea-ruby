@@ -10,7 +10,7 @@
 |                                                          |
 | Code Authors: Chen fei <cf850118@163.com>                |
 |               Ma Bingyao <mabingyao@gmail.com>           |
-| LastModified: Feb 8, 2016                                |
+| LastModified: Feb 11, 2016                               |
 |                                                          |
 \**********************************************************/
 
@@ -21,9 +21,11 @@
 #include "xxtea.h"
 
 VALUE rb_encrypt(VALUE mod, VALUE data, VALUE key) {
-	unsigned char * result;
+	void * result;
 	VALUE retval;
 	size_t data_len, out_len;
+
+	if (data == Qnil) return Qnil;
 
 	Check_Type(data, T_STRING);
 	Check_Type(key, T_STRING);
@@ -31,6 +33,8 @@ VALUE rb_encrypt(VALUE mod, VALUE data, VALUE key) {
 	data_len = RSTRING_LEN(data);
 
 	result = xxtea_encrypt(RSTRING_PTR(data), data_len, RSTRING_PTR(key), &out_len);
+
+	if (result == NULL) return Qnil;
 
 	retval = rb_str_new((const char *)result, out_len);
 
@@ -40,9 +44,11 @@ VALUE rb_encrypt(VALUE mod, VALUE data, VALUE key) {
 }
 
 VALUE rb_decrypt(VALUE mod, VALUE data, VALUE key) {
-	unsigned char *result;
+	void * result;
 	VALUE retval;
 	size_t data_len, out_len;
+
+	if (data == Qnil) return Qnil;
 
 	Check_Type(data, T_STRING);
 	Check_Type(key, T_STRING);
@@ -50,6 +56,8 @@ VALUE rb_decrypt(VALUE mod, VALUE data, VALUE key) {
 	data_len = RSTRING_LEN(data);
 
 	result = xxtea_decrypt(RSTRING_PTR(data), data_len, RSTRING_PTR(key), &out_len);
+
+	if (result == NULL) return Qnil;
 
 	retval = rb_str_new((const char *)result, out_len);
 
@@ -60,7 +68,9 @@ VALUE rb_decrypt(VALUE mod, VALUE data, VALUE key) {
 
 #ifdef RSTRING_NOEMBED
 VALUE rb_decrypt_utf8(VALUE mod, VALUE data, VALUE key) {
-	return rb_enc_associate(rb_decrypt(mod, data, key), rb_utf8_encoding());
+	VALUE result = rb_decrypt(mod, data, key);
+	if (result == Qnil) return result;
+	return rb_enc_associate(result, rb_utf8_encoding());
 }
 #endif
 
@@ -70,5 +80,7 @@ void Init_xxtea() {
     rb_define_singleton_method(XXTEA, "decrypt", rb_decrypt, 2);
 #ifdef RSTRING_NOEMBED
 	rb_define_singleton_method(XXTEA, "decrypt_utf8", rb_decrypt_utf8, 2);
+#else
+	rb_define_singleton_method(XXTEA, "decrypt_utf8", rb_decrypt, 2);
 #endif
 }

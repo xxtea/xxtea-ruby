@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name         = 'xxtea-ruby'
-  s.version      = '1.2.0'
+  s.version      = '1.3.0'
   s.license      = 'MIT'
   s.author       = 'Ma Bingyao ( andot )'
   s.email        = 'mabingyao@gmail.com'
@@ -17,4 +17,6 @@ EOF
   s.test_files   = s.files.grep(%r{^test/})
   s.require_path = 'lib'
   s.extensions   = ["ext/xxtea/extconf.rb"]
-  end
+  
+  s.add_runtime_dependency 'ffi', '~> 0.5', '>= 0.5.0'
+end

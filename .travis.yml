@@ -10,4 +10,6 @@ rvm:
   - jruby-19mode # JRuby in 1.9 mode
   - rbx-2.1.1
   - ree
+env:
+  - JAVA_OPTS="-Xcext.enabled=true"
 script: "bundle exec rake test"

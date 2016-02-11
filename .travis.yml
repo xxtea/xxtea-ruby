@@ -12,8 +12,66 @@ rvm:
   - rbx-2.1.1
   - ree
 jdk:
+  - openjdk6
   - openjdk7
   - oraclejdk7
   - oraclejdk8
-  - openjdk6
+matrix:
+  exclude:
+    - rvm: 1.8.7
+      jdk: openjdk6
+    - rvm: 1.8.7
+      jdk: openjdk7
+    - rvm: 1.8.7
+      jdk: oraclejdk7
+    - rvm: 1.8.7
+      jdk: oraclejdk8
+    - rvm: 1.9.2
+      jdk: openjdk6
+    - rvm: 1.9.2
+      jdk: openjdk7
+    - rvm: 1.9.2
+      jdk: oraclejdk7
+    - rvm: 1.9.2
+      jdk: oraclejdk8
+    - rvm: 1.9.3
+      jdk: openjdk6
+    - rvm: 1.9.3
+      jdk: openjdk7
+    - rvm: 1.9.3
+      jdk: oraclejdk7
+    - rvm: 1.9.3
+      jdk: oraclejdk8
+    - rvm: 2.0.0
+      jdk: openjdk6
+    - rvm: 2.0.0
+      jdk: openjdk7
+    - rvm: 2.0.0
+      jdk: oraclejdk7
+    - rvm: 2.0.0
+      jdk: oraclejdk8
+    - rvm: 2.1
+      jdk: openjdk6
+    - rvm: 2.1
+      jdk: openjdk7
+    - rvm: 2.1
+      jdk: oraclejdk7
+    - rvm: 2.1
+      jdk: oraclejdk8
+    - rvm: 2.2
+      jdk: openjdk6
+    - rvm: 2.2
+      jdk: openjdk7
+    - rvm: 2.2
+      jdk: oraclejdk7
+    - rvm: 2.2
+      jdk: oraclejdk8
+    - rvm: ree
+      jdk: openjdk6
+    - rvm: ree
+      jdk: openjdk7
+    - rvm: ree
+      jdk: oraclejdk7
+    - rvm: ree
+      jdk: oraclejdk8
 script: "bundle exec rake test"

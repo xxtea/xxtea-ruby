@@ -60,12 +60,4 @@ module XXTEA
     LIB.free(result)
     return retval
   end
-
-  if RUBY_VERSION >= "1.9.0" then
-    def decrypt_utf8(data, key)
-      decrypt(data, key).force_encoding(Encoding::UTF_8)
-    end
-  else
-    alias :decrypt_utf8 :decrypt
-  end
 end

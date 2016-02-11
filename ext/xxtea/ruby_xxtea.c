@@ -15,9 +15,6 @@
 \**********************************************************/
 
 #include <ruby.h>
-#ifdef RSTRING_NOEMBED
-#include <ruby/encoding.h>
-#endif
 #include "xxtea.h"
 
 VALUE rb_encrypt(VALUE mod, VALUE data, VALUE key) {
@@ -70,19 +67,8 @@ VALUE rb_decrypt(VALUE mod, VALUE data, VALUE key) {
 	return retval;
 }
 
-#ifdef RSTRING_NOEMBED
-VALUE rb_decrypt_utf8(VALUE mod, VALUE data, VALUE key) {
-	return rb_enc_associate(rb_decrypt(mod, data, key), rb_utf8_encoding());
-}
-#endif
-
 void Init_xxtea() {
     VALUE XXTEA = rb_define_module("XXTEA");
     rb_define_singleton_method(XXTEA, "encrypt", rb_encrypt, 2);
     rb_define_singleton_method(XXTEA, "decrypt", rb_decrypt, 2);
-#ifdef RSTRING_NOEMBED
-	rb_define_singleton_method(XXTEA, "decrypt_utf8", rb_decrypt_utf8, 2);
-#else
-	rb_define_singleton_method(XXTEA, "decrypt_utf8", rb_decrypt, 2);
-#endif
 }

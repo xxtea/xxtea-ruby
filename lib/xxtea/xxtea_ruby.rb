@@ -101,12 +101,4 @@ module XXTEA
     k = str_to_uint32_array(key.ljust(16, "\0"), false)
     uint32_array_to_bytes(decrypt_uint32_array(v, k), true)
   end
-
-  if RUBY_VERSION >= "1.9.0" then
-    def decrypt_utf8(data, key)
-      decrypt(data, key).force_encoding(Encoding::UTF_8)
-    end
-  else
-    alias :decrypt_utf8 :decrypt
-  end
 end

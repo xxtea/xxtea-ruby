@@ -25,16 +25,18 @@ VALUE rb_encrypt(VALUE mod, VALUE data, VALUE key) {
 	VALUE retval;
 	size_t data_len, out_len;
 
-	if (data == Qnil) return Qnil;
+	if (data == Qnil) return rb_str_new(0,0);
 
 	Check_Type(data, T_STRING);
 	Check_Type(key, T_STRING);
 
 	data_len = RSTRING_LEN(data);
 
+	if (data_len == 0) return data;
+
 	result = xxtea_encrypt(RSTRING_PTR(data), data_len, RSTRING_PTR(key), &out_len);
 
-	if (result == NULL) return Qnil;
+	if (result == NULL) return rb_str_new(0,0);
 
 	retval = rb_str_new((const char *)result, out_len);
 
@@ -48,16 +50,18 @@ VALUE rb_decrypt(VALUE mod, VALUE data, VALUE key) {
 	VALUE retval;
 	size_t data_len, out_len;
 
-	if (data == Qnil) return Qnil;
+	if (data == Qnil) return rb_str_new(0,0);
 
 	Check_Type(data, T_STRING);
 	Check_Type(key, T_STRING);
 
 	data_len = RSTRING_LEN(data);
 
+	if (data_len == 0) return data;
+
 	result = xxtea_decrypt(RSTRING_PTR(data), data_len, RSTRING_PTR(key), &out_len);
 
-	if (result == NULL) return Qnil;
+	if (result == NULL) return rb_str_new(0,0);
 
 	retval = rb_str_new((const char *)result, out_len);
 
@@ -68,9 +72,7 @@ VALUE rb_decrypt(VALUE mod, VALUE data, VALUE key) {
 
 #ifdef RSTRING_NOEMBED
 VALUE rb_decrypt_utf8(VALUE mod, VALUE data, VALUE key) {
-	VALUE result = rb_decrypt(mod, data, key);
-	if (result == Qnil) return result;
-	return rb_enc_associate(result, rb_utf8_encoding());
+	return rb_enc_associate(rb_decrypt(mod, data, key), rb_utf8_encoding());
 }
 #endif
 

@@ -1,3 +1,18 @@
+############################################################
+#                                                          #
+# xxtea_ffi.rb                                            #
+#                                                          #
+# XXTEA encryption algorithm library for Ruby.             #
+#                                                          #
+# Encryption Algorithm Authors:                            #
+#      David J. Wheeler                                    #
+#      Roger M. Needham                                    #
+#                                                          #
+# Code Author: Ma Bingyao <mabingyao@gmail.com>            #
+# LastModified: Feb 11, 2016                               #
+#                                                          #
+############################################################
+
 require "ffi"
 
 module FFI

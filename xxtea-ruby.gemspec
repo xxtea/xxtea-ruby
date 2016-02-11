@@ -16,7 +16,7 @@ EOF
   s.files        = `git ls-files`.split($/)
   s.test_files   = s.files.grep(%r{^test/})
   s.require_path = 'lib'
-  s.extensions   = ["ext/xxtea/extconf.rb"]
-  
-  s.add_runtime_dependency 'ffi', '~> 1.9', '>= 1.9.10'
+  if !defined?(JRUBY_VERSION) then
+    s.extensions   = ["ext/xxtea/extconf.rb"]
+  end
 end

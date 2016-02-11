@@ -3,8 +3,10 @@ require 'rake/extensiontask'
 require 'rake/testtask'
 require 'rake/clean'
 
-Rake::ExtensionTask.new('xxtea') do |ext|
-  ext.lib_dir = 'lib/xxtea'
+if !defined?(JRUBY_VERSION) then
+  Rake::ExtensionTask.new('xxtea') do |ext|
+    ext.lib_dir = 'lib/xxtea'
+  end
 end
 
 Rake::TestTask.new do |t|

@@ -42,7 +42,7 @@ module XXTEA
       bytes_to_uint32_array(s, w)
     end
   else
-    alias_method :str_to_uint32_array, "bytes_to_uint32_array"
+    alias :str_to_uint32_array :bytes_to_uint32_array
   end
 
   def mx(sum, y, z, p, e, k)
@@ -106,6 +106,6 @@ module XXTEA
       decrypt(data, key).force_encoding(Encoding::UTF_8)
     end
   else
-    alias_method :decrypt_utf8, "decrypt"
+    alias :decrypt_utf8 :decrypt
   end
 end

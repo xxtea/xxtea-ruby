@@ -17,7 +17,8 @@ module XXTEA
   private
   DELTA = 0x9e3779b9
 
-  module_function
+  extend self
+
   def uint32_array_to_bytes(v, w)
     n = (v.size - 1) << 2
     if w then
@@ -86,7 +87,7 @@ module XXTEA
   end
 
   public
-  module_function
+
   def encrypt(data, key)
     return '' if data.nil? or data.empty?
     v = str_to_uint32_array(data, true)

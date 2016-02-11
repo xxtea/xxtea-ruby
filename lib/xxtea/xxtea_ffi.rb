@@ -35,7 +35,7 @@ module XXTEA
     attach_function :free, [:pointer], :void
   end
   public
-  module_function
+  extend self
   def encrypt(data, key)
     return nil if data.nil?
     data_len = data.bytesize

@@ -16,6 +16,4 @@ jdk:
   - oraclejdk7
   - oraclejdk8
   - openjdk6
-env:
-  - JRUBY_OPTS="-Xcext.enabled=true"
 script: "bundle exec rake test"

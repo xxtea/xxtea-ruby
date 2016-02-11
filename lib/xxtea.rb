@@ -28,6 +28,5 @@ module XXTEA
     end
   else
     alias_method :decrypt_utf8, "decrypt"
-    end
   end
 end

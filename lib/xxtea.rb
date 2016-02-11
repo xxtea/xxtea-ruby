@@ -27,6 +27,7 @@ module XXTEA
       decrypt(data, key).force_encoding(Encoding::UTF_8)
     end
   else
-    alias :decrypt_utf8 :decrypt
+    alias_method :decrypt_utf8, "decrypt"
+    end
   end
 end

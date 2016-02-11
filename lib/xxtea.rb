@@ -20,6 +20,7 @@ else
 end
 
 module XXTEA
+  extend self
   VERSION = "1.3.0"
   if RUBY_VERSION >= "1.9.0" then
     def decrypt_utf8(data, key)

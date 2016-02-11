@@ -18,4 +18,6 @@ end
 desc "Run tests"
 task :default => :test
 
-Rake::Task[:test].prerequisites << :compile
+if !defined?(JRUBY_VERSION) then
+  Rake::Task[:test].prerequisites << :compile
+end

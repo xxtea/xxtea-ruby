@@ -9,7 +9,16 @@ else
     file.puts 'set(CMAKE_MACOSX_RPATH 1)' if RUBY_PLATFORM=~/darwin/
     file.puts 'set(LIBXXTEA_SRC ' + File.expand_path(File.dirname(__FILE__) + '/xxtea.c') +')'
     file.puts 'add_library(xxtea SHARED ${LIBXXTEA_SRC})'
-    file.puts 'install(TARGETS xxtea LIBRARY DESTINATION ' + File.expand_path(File.dirname(__FILE__) + '/../../lib/xxtea') + ')'
+    file.puts 'set_target_properties(xxtea PROPERTIES PREFIX "")'
+    file.puts 'set_target_properties(xxtea PROPERTIES SUFFIX "")'
+    if RUBY_PLATFORM=~/darwin/ then
+      file.puts 'set_target_properties(xxtea PROPERTIES OUTPUT_NAME "xxtea.bundle")'
+    elsif RUBY_PLATFORM=~/win32|w32/ then
+      file.puts 'set_target_properties(xxtea PROPERTIES OUTPUT_NAME "xxtea.dll")'
+    else
+      file.puts 'set_target_properties(xxtea PROPERTIES OUTPUT_NAME "xxtea.so")'
+    end
+    file.puts 'install(TARGETS xxtea DESTINATION ' + File.expand_path(File.dirname(__FILE__) + '/../../lib/xxtea') + ')'
   end
   system('cmake -G "Unix Makefiles" .')
 end

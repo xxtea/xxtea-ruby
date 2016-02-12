@@ -5,7 +5,7 @@ if defined?(JRUBY_VERSION) then
 else
   file = File.open('CMakeLists.txt', 'w') do |file|
     file.puts 'project(xxtea)'
-    file.puts 'cmake_minimum_required(VERSION 2.8.12)'
+    file.puts 'cmake_minimum_required(VERSION 2.6)'
     file.puts 'set(CMAKE_MACOSX_RPATH 1)' if RUBY_PLATFORM=~/darwin/
     file.puts 'set(LIBXXTEA_SRC xxtea.c)'
     file.puts 'add_library(xxtea SHARED ${LIBXXTEA_SRC})'

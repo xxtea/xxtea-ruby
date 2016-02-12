@@ -19,4 +19,5 @@ EOF
   s.extensions   = ["ext/xxtea/extconf.rb"]
 
   s.add_runtime_dependency 'ffi', '~> 1.9', '>= 1.9.10'
+  s.requirements << 'cmake'
 end

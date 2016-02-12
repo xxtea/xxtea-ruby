@@ -29,7 +29,7 @@ module XXTEA
   private
   module LIB
     extend FFI::Library
-    ffi_lib File.dirname(__FILE__) + '/xxtea.' + (RUBY_PLATFORM=~/darwin/ ? 'bundle' : 'so')
+    ffi_lib File.dirname(__FILE__) + '/libxxtea.' + (RUBY_PLATFORM=~/darwin/ ? 'dylib' : 'so')
     attach_function :xxtea_encrypt, [:pointer, :size_t, :pointer, :pointer], :pointer
     attach_function :xxtea_decrypt, [:pointer, :size_t, :pointer, :pointer], :pointer
     attach_function :free, [:pointer], :void

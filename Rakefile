@@ -3,11 +3,11 @@ require 'rake/extensiontask'
 require 'rake/testtask'
 require 'rake/clean'
 
-if !defined?(JRUBY_VERSION) then
+#if !defined?(JRUBY_VERSION) then
   Rake::ExtensionTask.new('xxtea') do |ext|
     ext.lib_dir = 'lib/xxtea'
   end
-end
+#end
 
 Rake::TestTask.new do |t|
   t.libs << 'test'
@@ -18,6 +18,6 @@ end
 desc "Run tests"
 task :default => :test
 
-if !defined?(JRUBY_VERSION) then
+#if !defined?(JRUBY_VERSION) then
   Rake::Task[:test].prerequisites << :compile
-end
+#end

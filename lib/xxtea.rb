@@ -16,7 +16,7 @@
 if !defined?(JRUBY_VERSION) then
   require "xxtea/xxtea"
 else
-  require "xxtea/xxtea_ruby"
+  require "xxtea/xxtea_ffi"
 end
 
 module XXTEA

@@ -7,6 +7,9 @@
 [![Build Status](https://travis-ci.org/xxtea/xxtea-ruby.svg?branch=master)](https://travis-ci.org/xxtea/xxtea-ruby)
 [![Gem](https://img.shields.io/gem/v/xxtea-ruby.svg)](https://rubygems.org/gems/xxtea-ruby)
 [![Gem](https://img.shields.io/gem/dt/xxtea-ruby.svg)](https://rubygems.org/gems/xxtea-ruby)
+[![Gem](https://img.shields.io/gem/dtv/xxtea-ruby.svg)](https://rubygems.org/gems/xxtea-ruby)
+[![Gems](https://img.shields.io/gem/rt/xxtea-ruby.svg)](https://rubygems.org/gems/xxtea-ruby)
+[![Gems](https://img.shields.io/gem/rd/xxtea-ruby.svg)](https://rubygems.org/gems/xxtea-ruby)
 
 ## 简介
 

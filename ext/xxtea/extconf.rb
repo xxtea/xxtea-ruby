@@ -1,6 +1,20 @@
+############################################################
+#                                                          #
+# xxtea/extconf.rb                                         #
+#                                                          #
+# XXTEA encryption algorithm library for Ruby.             #
+#                                                          #
+# Encryption Algorithm Authors:                            #
+#      David J. Wheeler                                    #
+#      Roger M. Needham                                    #
+#                                                          #
+# Code Author: Ma Bingyao <mabingyao@gmail.com>            #
+# LastModified: Feb 12, 2016                               #
+#                                                          #
+############################################################
+
 if !defined?(JRUBY_VERSION) then
   require 'mkmf'
-  $CFLAGS += ' -g -O3 -Wall '
   create_makefile('xxtea/xxtea')
 else
   file = File.open('CMakeLists.txt', 'w') do |file|

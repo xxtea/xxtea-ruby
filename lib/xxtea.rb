@@ -9,14 +9,18 @@
 #      Roger M. Needham                                    #
 #                                                          #
 # Code Author: Ma Bingyao <mabingyao@gmail.com>            #
-# LastModified: Feb 11, 2016                               #
+# LastModified: Feb 12, 2016                               #
 #                                                          #
 ############################################################
 
-if !defined?(JRUBY_VERSION) then
-  require "xxtea/xxtea"
+if File.exists?(File.dirname(__FILE__) + '/xxtea.' + (RUBY_PLATFORM=~/darwin/ ? 'dylib' : RUBY_PLATFORM=~/win32|w32/ ? 'dll' : 'so')) then
+  if !defined?(JRUBY_VERSION) then
+    require "xxtea/xxtea"
+  else
+    require "xxtea/xxtea_ffi"
+  end
 else
-  require "xxtea/xxtea_ffi"
+  require "xxtea/xxtea_ruby"
 end
 
 module XXTEA

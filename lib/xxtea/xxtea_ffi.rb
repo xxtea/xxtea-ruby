@@ -30,7 +30,7 @@ module XXTEA
   module LIB
     extend FFI::Library
     ext_name = RUBY_PLATFORM=~/darwin/ ? 'dylib' : RUBY_PLATFORM=~/win32|w32/ ? 'dll' : 'so'
-    ffi_lib File.dirname(__FILE__) + '/libxxtea.' + ext_name
+    ffi_lib File.dirname(__FILE__) + '/xxtea.' + ext_name
     attach_function :xxtea_encrypt, [:pointer, :size_t, :pointer, :pointer], :pointer
     attach_function :xxtea_decrypt, [:pointer, :size_t, :pointer, :pointer], :pointer
     attach_function :free, [:pointer], :void

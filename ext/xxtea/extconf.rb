@@ -1,4 +1,4 @@
-if defined?(JRUBY_VERSION) then
+if !defined?(JRUBY_VERSION) then
   require 'mkmf'
   $CFLAGS += ' -g -O3 -Wall '
   create_makefile('xxtea/xxtea')
@@ -9,7 +9,7 @@ else
     file.puts 'set(CMAKE_MACOSX_RPATH 1)' if RUBY_PLATFORM=~/darwin/
     file.puts 'set(LIBXXTEA_SRC xxtea.c)'
     file.puts 'add_library(xxtea SHARED ${LIBXXTEA_SRC})'
-    file.puts 'install(TARGETS xxtea DESTINATION ' + File.absolute_path(File.dirname(__FILE__) + '/../../lib/xxtea') + ')'
+    file.puts 'install(TARGETS xxtea DESTINATION ' + File.expand_path(File.dirname(__FILE__) + '/../../lib/xxtea') + ')'
   end
   system('cmake -G "Unix Makefiles" .')
 end

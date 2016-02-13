@@ -1,6 +1,11 @@
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'xxtea'
+
 Gem::Specification.new do |s|
   s.name         = 'xxtea-ruby'
-  s.version      = '1.3.0'
+  s.version      = XXTEA::VERSION
   s.license      = 'MIT'
   s.author       = 'Ma Bingyao ( andot )'
   s.email        = 'mabingyao@gmail.com'
@@ -16,7 +21,7 @@ EOF
   s.files        = `git ls-files`.split($/)
   s.test_files   = s.files.grep(%r{^test/})
   s.require_path = 'lib'
-  s.extensions   = ["ext/xxtea/extconf.rb"]
+  s.extensions   = ['ext/xxtea/extconf.rb']
 
   s.add_runtime_dependency 'ffi', '~> 1.9', '>= 1.9.10'
   s.requirements << 'cmake'

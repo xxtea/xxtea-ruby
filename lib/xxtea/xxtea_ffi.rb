@@ -9,7 +9,7 @@
 #      Roger M. Needham                                    #
 #                                                          #
 # Code Author: Ma Bingyao <mabingyao@gmail.com>            #
-# LastModified: Feb 12, 2016                               #
+# LastModified: Feb 13, 2016                               #
 #                                                          #
 ############################################################
 
@@ -29,7 +29,7 @@ module XXTEA
   private
   module LIB
     extend FFI::Library
-    ffi_lib File.dirname(__FILE__) + '/xxtea.' + (RUBY_PLATFORM=~/darwin/ ? 'dylib' : RUBY_PLATFORM=~/win32|w32/ ? 'dll' : 'so')
+    ffi_lib File.join(File.dirname(__FILE__), 'xxtea.' + (RUBY_PLATFORM=~/darwin/ ? 'dylib' : RUBY_PLATFORM=~/win32|w32/ ? 'dll' : 'so'))
     attach_function :xxtea_encrypt, [:pointer, :size_t, :pointer, :pointer], :pointer
     attach_function :xxtea_decrypt, [:pointer, :size_t, :pointer, :pointer], :pointer
     attach_function :free, [:pointer], :void

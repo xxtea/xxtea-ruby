@@ -9,11 +9,11 @@
 #      Roger M. Needham                                    #
 #                                                          #
 # Code Author: Ma Bingyao <mabingyao@gmail.com>            #
-# LastModified: Feb 12, 2016                               #
+# LastModified: Feb 13, 2016                               #
 #                                                          #
 ############################################################
 
-if File.exists?(File.dirname(__FILE__) + '/xxtea.' + (RUBY_PLATFORM=~/darwin/ ? 'dylib' : RUBY_PLATFORM=~/win32|w32/ ? 'dll' : 'so')) then
+if File.exists?(File.join(File.dirname(__FILE__), 'xxtea.' + (RUBY_PLATFORM=~/darwin/ ? 'dylib' : RUBY_PLATFORM=~/win32|w32/ ? 'dll' : 'so'))) then
   if !defined?(JRUBY_VERSION) then
     require "xxtea/xxtea"
   else
@@ -25,7 +25,7 @@ end
 
 module XXTEA
   extend self
-  VERSION = "1.3.0"
+  VERSION = "1.3.1"
   if RUBY_VERSION >= "1.9.0" then
     def decrypt_utf8(data, key)
       decrypt(data, key).force_encoding(Encoding::UTF_8)

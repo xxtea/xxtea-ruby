@@ -9,7 +9,7 @@
 #      Roger M. Needham                                    #
 #                                                          #
 # Code Author: Ma Bingyao <mabingyao@gmail.com>            #
-# LastModified: Feb 12, 2016                               #
+# LastModified: Feb 13, 2016                               #
 #                                                          #
 ############################################################
 
@@ -21,7 +21,7 @@ else
     file.puts 'project(xxtea)'
     file.puts 'cmake_minimum_required(VERSION 2.6)'
     file.puts 'set(CMAKE_MACOSX_RPATH 1)' if RUBY_PLATFORM=~/darwin/
-    file.puts 'set(LIBXXTEA_SRC ' + File.expand_path(File.dirname(__FILE__) + '/xxtea.c') +')'
+    file.puts 'set(LIBXXTEA_SRC ' + File.expand_path(File.join(File.dirname(__FILE__), 'xxtea.c')) +')'
     file.puts 'add_library(xxtea SHARED ${LIBXXTEA_SRC})'
     file.puts 'set_target_properties(xxtea PROPERTIES PREFIX "")'
     file.puts 'set_target_properties(xxtea PROPERTIES SUFFIX "")'
@@ -32,7 +32,7 @@ else
     else
       file.puts 'set_target_properties(xxtea PROPERTIES OUTPUT_NAME "xxtea.so")'
     end
-    file.puts 'install(TARGETS xxtea DESTINATION ' + File.expand_path(File.dirname(__FILE__) + '/../../lib/xxtea') + ')'
+    file.puts 'install(TARGETS xxtea DESTINATION ' + File.expand_path(File.join(File.dirname(__FILE__), '../../lib/xxtea')) + ')'
   end
   system('cmake -G "Unix Makefiles" .')
 end

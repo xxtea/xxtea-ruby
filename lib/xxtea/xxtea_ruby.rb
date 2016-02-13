@@ -9,7 +9,7 @@
 #      Roger M. Needham                                    #
 #                                                          #
 # Code Author: Ma Bingyao <mabingyao@gmail.com>            #
-# LastModified: Feb 11, 2016                               #
+# LastModified: Feb 13, 2016                               #
 #                                                          #
 ############################################################
 module XXTEA
@@ -50,20 +50,24 @@ module XXTEA
     ((z >> 5 ^ y << 2) + (y >> 3 ^ z << 4)) ^ ((sum ^ y) + (k[p & 3 ^ e] ^ z))
   end
 
+  def int32(i)
+    i & 0xffffffff
+  end
+
   def encrypt_uint32_array(v, k)
     n = v.size - 1
     z = v[n]
     y = 0
     sum = 0
     (6 + 52 / (n + 1)).downto(1) {
-      sum = (sum + DELTA) & 0xffffffff
+      sum = int32(sum + DELTA)
       e = (sum >> 2) & 3
       for p in (0...n)
         y = v[p + 1]
-        z = v[p] = (v[p] + mx(sum, y, z, p, e, k)) & 0xffffffff
+        z = v[p] = int32(v[p] + mx(sum, y, z, p, e, k))
       end
       y = v[0]
-      z = v[n] = (v[n] + mx(sum, y, z, n, e, k)) & 0xffffffff
+      z = v[n] = int32(v[n] + mx(sum, y, z, n, e, k))
     }
     return v
   end
@@ -72,16 +76,16 @@ module XXTEA
     n = v.size - 1
     z = 0
     y = v[0]
-    sum = ((6 + 52 / (n + 1)) * DELTA) & 0xffffffff
+    sum = int32((6 + 52 / (n + 1)) * DELTA)
     while (sum != 0)
       e = sum >> 2 & 3
       n.downto(1) { |p|
         z = v[p - 1]
-        y = v[p] = (v[p] - mx(sum, y, z, p, e, k)) & 0xffffffff
+        y = v[p] = int32(v[p] - mx(sum, y, z, p, e, k))
       }
       z = v[n]
-      y = v[0] = (v[0] - mx(sum, y, z, 0, e, k)) & 0xffffffff
-      sum = (sum - DELTA) & 0xffffffff
+      y = v[0] = int32(v[0] - mx(sum, y, z, 0, e, k))
+      sum = int32(sum - DELTA)
     end
     return v
   end
